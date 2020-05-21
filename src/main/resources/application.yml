@@ -1,0 +1,39 @@
+spring:
+  datasource:
+    driver-class-name: org.postgresql.Driver
+    url: jdbc:postgresql://localhost:5432/logging
+    username: postgres
+    password: murad123456
+    # HikariCP settings
+    hikari:
+      #60 sec
+      connection-timeout: 60000
+      # max 5
+      maximum-pool-size: 5
+  #Disabling contextual LOB creation as createClob() method
+  jpa:
+    database-platform: org.hibernate.dialect.PostgreSQL94Dialect
+    show-sql: true
+    properties:
+      hibernate:
+        id:
+          new_generator_mappings: true
+        temp:
+          use_jdbc_metadata_defaults: false
+        format_sql: true
+        jdbc:
+          use_streams_for_binary: true
+          lob:
+            non_contextual_creation: true
+  liquibase:
+    change-log: classpath:liquibase/changelog-master.yml
+  servlet:
+    multipart:
+      enabled: true
+      file-size-threshold: 2KB
+      maxFileSize: 20MB
+      maxRequestSize: 24MB
+server:
+  port: 8080
+
+

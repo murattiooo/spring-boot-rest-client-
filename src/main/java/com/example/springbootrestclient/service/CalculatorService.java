@@ -1,11 +1,9 @@
-package com.example.springbootrestclient.Service;
+package com.example.springbootrestclient.service;
 
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Service;
 
 @Service
-public interface MyService {
+public interface CalculatorService {
 
        String  getStringAdd(int value1,int value2);
 

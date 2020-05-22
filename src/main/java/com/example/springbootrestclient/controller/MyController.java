@@ -1,9 +1,8 @@
-package com.example.springbootrestclient.Controller;
+package com.example.springbootrestclient.controller;
 
 
-import com.example.springbootrestclient.Dialect.MyDialect;
-import com.example.springbootrestclient.Service.LogService;
-import com.example.springbootrestclient.entity.LogEntity;
+import com.example.springbootrestclient.dialect.MyDialect;
+import com.example.springbootrestclient.service.LogService;
 import com.example.springbootrestclient.model.CalcRequest;
 import com.example.springbootrestclient.model.LogDto;
 import org.slf4j.Logger;
@@ -16,7 +15,7 @@ import java.text.SimpleDateFormat;
 import java.util.Date;
 
 @RestController
-@RequestMapping("/my-main-url")
+@RequestMapping("/calculator")
 public class MyController {
 
 
@@ -29,18 +28,15 @@ public class MyController {
     MyDialect myDialect;
     @Autowired
     LogDto logDto;
-    private Logger logger = LoggerFactory.getLogger(this.getClass());
+    private Logger logger = LoggerFactory.getLogger(MyController.class);
 
     @PostMapping(value = "/do-add",produces = MediaType.APPLICATION_JSON_VALUE)
     public String  sendAdd(@RequestBody CalcRequest request){
-
-
         String date = simpleDateFormat.format(new Date());
         logger.info(date+" Call 1. Request to JSON");
         logDto.setValue(date+" Call 1. Request to JSON");
         logService.addLog(logDto);
         String  addResult=  myDialect.getStringAdd(request.getValue1(),request.getValue2());
-
         return   addResult;
     }
 
@@ -48,6 +44,8 @@ public class MyController {
     public String  sendDivide(@RequestBody CalcRequest request){
         String date = simpleDateFormat.format(new Date());
         logger.info(date+" Call 1. Request to JSON");
+        logDto.setValue(date+" Call 1. Request to JSON");
+        logService.addLog(logDto);
         String  addResult=  myDialect.getStringDivide(request.getValue1(),request.getValue2());
         return   addResult;
     }
@@ -56,6 +54,8 @@ public class MyController {
     public String  sendMultiple(@RequestBody CalcRequest request){
         String date = simpleDateFormat.format(new Date());
         logger.info(date+" Call 1. Request to JSON");
+        logDto.setValue(date+" Call 1. Request to JSON");
+        logService.addLog(logDto);
         String  addResult=  myDialect.getStringMultiple(request.getValue1(),request.getValue2());
         return   addResult;
     }
@@ -65,6 +65,8 @@ public class MyController {
     public String  sendSubtract(@RequestBody CalcRequest request){
         String date = simpleDateFormat.format(new Date());
         logger.info(date+" Call 1. Request to JSON");
+        logDto.setValue(date+" Call 1. Request to JSON");
+        logService.addLog(logDto);
         String  addResult=  myDialect.getStringSubtract(request.getValue1(),request.getValue2());
         return   addResult;
     }

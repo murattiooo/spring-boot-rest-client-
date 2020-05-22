@@ -1,4 +1,4 @@
-package com.example.springbootrestclient.Service;
+package com.example.springbootrestclient.service;
 
 import com.example.springbootrestclient.entity.LogEntity;
 import com.example.springbootrestclient.model.LogDto;

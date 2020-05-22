@@ -3,7 +3,7 @@ spring:
     driver-class-name: org.postgresql.Driver
     url: jdbc:postgresql://localhost:5432/logging
    # username: postgres
-   # password: ********
+    #password: ***********
     # HikariCP settings
     hikari:
       #60 sec

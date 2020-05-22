@@ -1,7 +1,9 @@
 package com.example.springbootrestclient.model;
 
 import com.example.springbootrestclient.entity.LogEntity;
+import org.springframework.stereotype.Component;
 
+@Component
 public class LogDto {
 
     private Long id;

@@ -27,18 +27,20 @@ public class MyController {
 
     @Autowired
     MyDialect myDialect;
+    @Autowired
+    LogDto logDto;
     private Logger logger = LoggerFactory.getLogger(this.getClass());
 
     @PostMapping(value = "/do-add",produces = MediaType.APPLICATION_JSON_VALUE)
     public String  sendAdd(@RequestBody CalcRequest request){
+
+
         String date = simpleDateFormat.format(new Date());
-          logger.info(date+" Call 1. Request to JSON");
-        LogEntity logToDB=new LogEntity();
-        String  addResult=  myDialect.getStringAdd(request.getValue1(),request.getValue2());
-        LogDto logDto =new LogDto();
-        logDto.setValue(addResult);
+        logger.info(date+" Call 1. Request to JSON");
+        logDto.setValue(date+" Call 1. Request to JSON");
         logService.addLog(logDto);
-      //  addLogService.addLog(logToDB);
+        String  addResult=  myDialect.getStringAdd(request.getValue1(),request.getValue2());
+
         return   addResult;
     }
 
